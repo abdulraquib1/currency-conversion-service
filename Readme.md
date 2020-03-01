@@ -13,7 +13,7 @@
 
 ```
 Overview of features
-* Multiple instances of Limit Service can load the config changes from spring
+* Multiple instances of Currency COnversion Service can load the config changes from spring
 * cloud config server rather than changing and bundling in each server
 * Updated the JPA Mappings with data.sql and entity annotations. 
 * Create JPA ExchangeValueRepository and update the controller to lookup date from repository
