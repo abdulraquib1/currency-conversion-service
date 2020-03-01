@@ -13,19 +13,16 @@
 
 ```
 Overview of features
-* Multiple instances of Currency COnversion Service can load the config changes from spring
-* cloud config server rather than changing and bundling in each server
-* Updated the JPA Mappings with data.sql and entity annotations. 
-* Create JPA ExchangeValueRepository and update the controller to lookup date from repository
+* Use Rest Template to invoke other Rest Service
+* Use properties to load the URL
 
 ```
 
 
 ** References **
 
-[Spring properties reference](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
-
-[MD File Syntax](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
-
-[In28mins Github Resource Config](https://github.com/in28minutes/spring-microservices/tree/master/03.microservices)
-[Install Github on local](https://git-scm.com/)
+* [Spring properties reference](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
+* [Spring Configurations](https://www.baeldung.com/properties-with-spring)
+* [MD File Syntax](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
+* [In28mins Github Resource Config](https://github.com/in28minutes/spring-microservices/tree/master/03.microservices)
+* [Install Github on local](https://git-scm.com/)

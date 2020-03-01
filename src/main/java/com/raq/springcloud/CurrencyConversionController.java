@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,11 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class CurrencyConversionController {
 
-
+	//currency.exchange.service.url=http://localhost:8000/currency-exchange
+	@Value( "${currency.exchange.service.url}" )
+	private String currencyExchangeServiceURL;
+ 
+	
 	@GetMapping("/currency-converter/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversionBean convertCurrency(@PathVariable String from, @PathVariable String to,
 			@PathVariable BigDecimal quantity) {
@@ -25,10 +30,17 @@ public class CurrencyConversionController {
 		uriVariables.put("from", from);
 		uriVariables.put("to", to);
 
-		ResponseEntity<CurrencyConversionBean> response = new RestTemplate().getForEntity(
-				"http://localhost:8000/currency-exchange/from/{from}/to/{to}", CurrencyConversionBean.class,
-				uriVariables);
+//		ResponseEntity<CurrencyConversionBean> response = new RestTemplate().getForEntity(
+//				"http://localhost:8000/currency-exchange/from/{from}/to/{to}", CurrencyConversionBean.class,
+//				uriVariables);
 
+		
+		
+		ResponseEntity<CurrencyConversionBean> response = new RestTemplate().getForEntity(
+				currencyExchangeServiceURL +"/from/{from}/to/{to}", CurrencyConversionBean.class,
+		uriVariables);
+
+		
 		CurrencyConversionBean currencyConversionResp = response.getBody();
 		
 		CurrencyConversionBean finalResponse 
