@@ -1,24 +1,26 @@
 # Spring Cloud : Currency-Conversion-Service
  
-** Demonstrates reading properties from application.properties **
+
+** Overview of features **
+* Use Rest Template to invoke other Rest Service
+* Use properties to load the URL
+* Use Feign client to invoke other Service
+* Use of Ribbon client for load balancing
+* Demonstrates reading properties from application.properties *
+
 
 ** Uses Springboot 2.2.4.RELEASE **
-
 ** Currency Conversion Service 8100, 8101, 8102, ... **
 
  
 
 **  http://localhost:8100/currency-converter/from/USD/to/INR/quantity/1000 - uses Rest Template **
+
 **  http://localhost:8100/currency-converter-feign/from/EUR/to/INR/quantity/1000 -use Feign Client**
+
 **  http://localhost:8100/h2-console/ **  
 
 ```
-Overview of features
-* Use Rest Template to invoke other Rest Service
-* Use properties to load the URL
-* Use Feign client to invoke other Service
-* Use of Ribbon client for loadbalancing
-
 
 //For Fiegn client
 Step 1
