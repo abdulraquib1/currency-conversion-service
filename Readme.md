@@ -17,7 +17,10 @@ Overview of features
 * Use Rest Template to invoke other Rest Service
 * Use properties to load the URL
 * Use Feign client to invoke other Service
+* Use of Ribbon client for loadbalancing
 
+
+//For Fiegn client
 Step 1
 <dependency>
 		<groupId>org.springframework.cloud</groupId>
@@ -45,6 +48,24 @@ public interface CurrencyExchangeServiceProxy {
 Step 4:
 Use this method in the controller
 convertCurrencyUsingFeign
+
+
+//For Ribbon Naming Server	
+
+Step 1
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+</dependency>
+		
+Step 2
+@FeignClient(name="currency-exchange-service")
+@RibbonClient(name="currency-exchange-service")
+public interface CurrencyExchangeServiceProxy {
+
+Step3
+Application.properties
+currency-exchange-service.ribbon.listOfServers=http://localhost:8000,http://localhost:8001
 
 ```
 
