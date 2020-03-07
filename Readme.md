@@ -8,13 +8,43 @@
 
  
 
-**  http://localhost:8100/currency-converter/from/USD/to/INR/quantity/1000 **
+**  http://localhost:8100/currency-converter/from/USD/to/INR/quantity/1000 - uses Rest Template **
+**  http://localhost:8100/currency-converter-feign/from/EUR/to/INR/quantity/1000 -use Feign Client**
 **  http://localhost:8100/h2-console/ **  
 
 ```
 Overview of features
 * Use Rest Template to invoke other Rest Service
 * Use properties to load the URL
+* Use Feign client to invoke other Service
+
+Step 1
+<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-openfeign</artifactId>
+</dependency>
+
+Step 2:
+@EnableFeignClients("com.raq.springcloud")
+public class CurrencyConversionServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CurrencyConversionServiceApplication.class, args);
+	}
+	
+	
+Step 3:
+@FeignClient(name="currency-exchange-service",url="localhost:8000")
+public interface CurrencyExchangeServiceProxy {
+
+	@GetMapping("/currency-exchange/from/{from}/to/{to}")
+	public CurrencyConversionBean retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") 	String to);
+
+}
+
+Step 4:
+Use this method in the controller
+convertCurrencyUsingFeign
 
 ```
 
