@@ -8,6 +8,7 @@
 * Use of Ribbon client for load balancing
 * Demonstrates reading properties from application.properties *
 * Register with Eureka Naming Server *
+* Discover currency exchange service using Eureka Namaing Server
 
 
 ** Uses Springboot 2.2.4.RELEASE **
@@ -88,6 +89,11 @@ Step 3:
 Application.properties
 	eureka.client.service-url.default-zone=http://localhost:8761/eureka 
 	currency.exchange.service.url=http://localhost:8000/currency-exchange
+
+
+//Discover currency exchange service using Eureka Namaing Server
+Application.properties
+#currency-exchange-service.ribbon.listOfServers=http://localhost:8000,http://localhost:8001
 
 
 ```
