@@ -7,6 +7,7 @@
 * Use Feign client to invoke other Service
 * Use of Ribbon client for load balancing
 * Demonstrates reading properties from application.properties *
+* Register with Eureka Naming Server *
 
 
 ** Uses Springboot 2.2.4.RELEASE **
@@ -68,6 +69,26 @@ public interface CurrencyExchangeServiceProxy {
 Step3
 Application.properties
 currency-exchange-service.ribbon.listOfServers=http://localhost:8000,http://localhost:8001
+
+//Register with Eureka Naming Server
+
+Step 1:
+
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+Step 2:
+	@EnableDiscoveryClient
+	public class CurrencyConversionServiceApplication {
+
+Step 3:
+Application.properties
+	eureka.client.service-url.default-zone=http://localhost:8761/eureka 
+	currency.exchange.service.url=http://localhost:8000/currency-exchange
+
 
 ```
 
